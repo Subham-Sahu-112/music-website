@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Prem Aanand</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./contact.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo-container">
+          <a href="/"><img src="./LOGO Prem 2 F.jpg" alt="logo" /></a>
+        </div>
+        <ul class="navlist-container">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Collaboration</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <div class="contact-container">
+        <form id="contact-form" action="" method="post">
+          <h3>Quick Contact</h3>
+          <h4>Contact us today, and get reply with in 24 hours!</h4>
+          <fieldset>
+            <input
+              placeholder="Your name"
+              type="text"
+              tabindex="1"
+              required
+              autofocus
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="Your Email Address"
+              type="email"
+              tabindex="2"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <input
+              placeholder="Your Phone Number"
+              type="tel"
+              tabindex="3"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <textarea
+              placeholder="Type your Message Here...."
+              tabindex="5"
+              required
+            ></textarea>
+          </fieldset>
+          <fieldset>
+            <button
+              name="submit"
+              type="submit"
+              id="contact-submit"
+              data-submit="...Sending"
+            >
+              Submit
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2024 Prem Aanand. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+  </body>
+</html>

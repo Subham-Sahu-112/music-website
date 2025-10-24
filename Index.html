@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prem Aanand</title>
+    <link rel="stylesheet" href="./index.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo-container">
+          <a href="/"><img src="./LOGO Prem 2 F.jpg" alt="logo" /></a>
+        </div>
+        <ul class="navlist-container">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Collaboration</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="./Images/collab21.jpg" alt="prem" />
+      <img src="./Images/collab5.jpg" alt="prem" />
+      <img src="./Images/award9.jpg" alt="prem" />
+    </section>
+
+    <!-- Image Slide Section -->
+    <section class="image-slide">
+      <button class="slide-btn prev-btn" onclick="changeSlide(-1)">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="slide-container">
+        <div class="slide">
+          <img src="./Images/award1.jpg" alt="prem" />
+        </div>
+        <div class="slide">
+          <img src="./Images/award3.jpg" alt="prem" />
+        </div>
+        <div class="slide">
+          <img src="./Images/award17.jpg" alt="prem" />
+        </div>
+        <div class="slide">
+          <img src="./Images/award5.jpg" alt="prem" />
+        </div>
+        <div class="slide">
+          <img src="./Images/award9.jpg" alt="prem" />
+        </div>
+        <div class="slide">
+          <img src="./Images/award12.jpg" alt="prem" />
+        </div>
+        <div class="slide">
+          <img src="./Images/award13.jpg" alt="prem" />
+        </div>
+      </div>
+      <button class="slide-btn next-btn" onclick="changeSlide(1)">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="hero">
+      <img src="./Images/collab3.jpg" alt="prem" />
+      <img src="./Images/studio.jpg" alt="prem" />
+      <img src="./Images/award13.jpg" alt="prem" />
+    </section>
+
+    <script src="./script.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+  </body>
+</html>
