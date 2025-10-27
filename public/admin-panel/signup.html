@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Signup - Prem Aanand</title>
+    <link rel="stylesheet" href="../css/admin/signup.css">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .verification-message {
+        display: none;
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        border: none;
+        color: white;
+        padding: 0;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(17, 153, 142, 0.3);
+        animation: slideDown 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .verification-message.show {
+        display: block;
+      }
+
+      .verification-message-content {
+        padding: 40px;
+      }
+
+      .verification-message-icon {
+        font-size: 60px;
+        margin-bottom: 15px;
+        animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .verification-message h3 {
+        margin: 0 0 10px 0;
+        font-size: 28px;
+        font-weight: 700;
+      }
+
+      .verification-message p {
+        margin: 8px 0;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .verification-email {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-weight: 600;
+        word-break: break-all;
+        border: 2px dashed rgba(255, 255, 255, 0.5);
+      }
+
+      .verification-message small {
+        font-size: 13px;
+        opacity: 0.9;
+        display: block;
+        margin-top: 15px;
+      }
+
+      .resend-link {
+        color: #fff;
+        cursor: pointer;
+        text-decoration: underline;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+
+      .resend-link:hover {
+        text-decoration: none;
+        opacity: 0.8;
+      }
+
+      .verification-tips {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+        text-align: left;
+        font-size: 13px;
+      }
+
+      .verification-tips li {
+        margin: 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup">
+      <div class="container">
+        <a href="/" class="back">Back</a>
+        <div class="header">
+          <h2><i class="fas fa-lock"></i> Admin Register</h2>
+        </div>
+
+        <div id="verificationMessage" class="verification-message">
+          <div class="verification-message-content">
+            <div class="verification-message-icon">✓</div>
+            <h3>Registration Successful!</h3>
+            <p>A verification email has been sent to:</p>
+            <div class="verification-email" id="verificationEmail"></div>
+            <p style="margin-top: 15px;">Please check your email and click the verification link to activate your account.</p>
+            <div class="verification-tips">
+              <p style="font-weight: 600; margin-bottom: 10px;">💡 Tips:</p>
+              <ul style="margin: 0; padding-left: 20px;">
+                <li>Check your spam/junk folder if you don't see the email</li>
+                <li>Verification link is valid for 24 hours</li>
+                <li>You can <span class="resend-link" onclick="resendVerificationEmail()">resend the verification email</span> if needed</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-wrapper" id="formWrapper">
+          <p class="form-description">Create your admin account to manage the platform</p>
+          
+          <form id="adminSignupForm">
+            <div class="form-group name">
+              <label for="name"><i class="fas fa-user"></i> Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+            </div>
+
+            <div class="form-group email">
+              <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group pass">
+              <label for="password"><i class="fas fa-lock"></i> Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter a strong password" required />
+              <span class="password-hint">Min. 8 characters, 1 uppercase, 1 number</span>
+            </div>
+
+            <div class="form-group confirm-pass">
+              <label for="confirm-password"><i class="fas fa-lock"></i> Confirm Password</label>
+              <input type="password" id="confirm-password" name="confirm_password" placeholder="Re-enter your password" required />
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <i class="fas fa-user-plus"></i> Create Account
+            </button>
+
+            <div class="form-footer">
+              <p>Already have an account? <a href="/admin-panel/login.html">Login here</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+      const signupForm = document.getElementById("adminSignupForm");
+      const verificationMessage = document.getElementById("verificationMessage");
+      const formWrapper = document.getElementById("formWrapper");
+      const verificationEmail = document.getElementById("verificationEmail");
+      const submitBtn = document.getElementById("submitBtn");
+
+      signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        // Validate passwords match
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+          return;
+        }
+
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+
+        try {
+          const formData = {
+            name,
+            email,
+            password,
+          };
+
+          const response = await fetch("http://localhost:4000/admin-register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            // Show verification message
+            verificationEmail.textContent = email;
+            verificationMessage.classList.add("show");
+            formWrapper.style.display = "none";
+          } else {
+            alert(result.message || "Registration failed. Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+          }
+        } catch (error) {
+          console.error("Registration error:", error);
+          alert("An error occurred during registration. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-user-plus"></i> Create Account';
+        }
+      });
+
+      async function resendVerificationEmail() {
+        const email = document.getElementById("email").value;
+        if (!email) {
+          alert("Please enter an email address first.");
+          return;
+        }
+
+        try {
+          const response = await fetch("http://localhost:4000/resend-verification-email", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            alert("Verification email resent! Check your inbox.");
+          } else {
+            alert(data.message || "Failed to resend verification email.");
+          }
+        } catch (error) {
+          console.error("Resend error:", error);
+          alert("An error occurred. Please try again.");
+        }
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,489 @@
+/* Admin Signup Section Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rothek Normal", "Rothek Normal Placeholder", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #121212 0%, #1a1a1a 50%, #0f0f0f 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.signup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  max-width: 550px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 215, 0, 0.02) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 25px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.1), 0 0 40px rgba(255, 215, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.back {
+  width: max-content;
+  border: 2px solid #ffd700;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffd700;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.header a:hover {
+  background: #ffd700;
+  color: #000;
+  transform: translateX(-5px);
+}
+
+.header h2 {
+  color: #ffd700;
+  font-size: 2rem;
+  text-align: center;
+  flex: 1;
+  letter-spacing: 2px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.header h2 i {
+  font-size: 1.8rem;
+}
+
+/* Form Wrapper */
+.form-wrapper {
+  width: 100%;
+}
+
+.form-description {
+  color: #b0b0b0;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  color: #ffd700;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group label i {
+  font-size: 1.1rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.form-group input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.25), inset 0 0 10px rgba(255, 215, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.form-group input:hover {
+  border-color: rgba(255, 215, 0, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Password Hint */
+.password-hint {
+  color: rgba(255, 215, 0, 0.6);
+  font-size: 0.85rem;
+  margin-top: -5px;
+  font-style: italic;
+}
+
+/* Checkbox Group */
+.form-group.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-group.checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #ffd700;
+}
+
+.form-group.checkbox label {
+  margin: 0;
+  text-transform: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  letter-spacing: 0;
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: 16px 35px;
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submit-btn i {
+  font-size: 1.2rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(255, 215, 0, 0.45);
+  background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffed4e 100%);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Form Footer */
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.form-footer p {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+}
+
+.form-footer a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.form-footer a:hover {
+  color: #ffed4e;
+  border-bottom-color: #ffd700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 40px 30px;
+    border-radius: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .header h2 {
+    font-size: 1.6rem;
+    width: 100%;
+  }
+
+  .header a {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  form {
+    gap: 20px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 13px 16px;
+    font-size: 1rem;
+  }
+
+  .submit-btn {
+    padding: 14px 30px;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 30px 22px;
+    border-radius: 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header h2 {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    gap: 8px;
+  }
+
+  .header h2 i {
+    font-size: 1.4rem;
+  }
+
+  .header a {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+    border-radius: 6px;
+  }
+
+  .form-description {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .form-group label i {
+    font-size: 1rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .password-hint {
+    font-size: 0.8rem;
+  }
+
+  .form-group.checkbox {
+    gap: 10px;
+  }
+
+  .form-group.checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .form-group.checkbox label {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    gap: 8px;
+  }
+
+  .submit-btn i {
+    font-size: 1rem;
+  }
+
+  form {
+    gap: 18px;
+  }
+
+  .form-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+
+  .form-footer p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container {
+  animation: slideInUp 0.7s ease-out;
+}
+
+.header {
+  animation: slideInUp 0.7s ease-out;
+}
+
+.form-description {
+  animation: slideInUp 0.8s ease-out;
+}
+
+form > .form-group {
+  animation: slideInUp 0.7s ease-out;
+  animation-fill-mode: both;
+}
+
+.form-group.name {
+  animation-delay: 0.1s;
+}
+
+.form-group.email {
+  animation-delay: 0.2s;
+}
+
+.form-group.pass {
+  animation-delay: 0.3s;
+}
+
+.form-group.confirm-pass {
+  animation-delay: 0.4s;
+}
+
+.form-group.checkbox {
+  animation-delay: 0.5s;
+}
+
+.submit-btn {
+  animation: slideInUp 0.7s ease-out;
+  animation-delay: 0.6s;
+  animation-fill-mode: both;
+}
+
+.form-footer {
+  animation: fadeIn 0.8s ease-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: both;
+}
+
+/* Glow Effect on Input Focus */
+@keyframes glowEffect {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1), inset 0 0 5px rgba(255, 215, 0, 0.02);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.3), inset 0 0 15px rgba(255, 215, 0, 0.08);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.1), inset 0 0 5px rgba(255, 215, 0, 0.02);
+  }
+}
+
+.form-group input:focus {
+  animation: glowEffect 2s ease-in-out infinite;
+}
+
+/* Loading State */
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.35);
+}

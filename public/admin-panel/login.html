@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login - Prem Aanand</title>
+    <link rel="stylesheet" href="../css/admin/login.css">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .alert {
+        display: none;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border-left: 4px solid;
+      }
+
+      .alert.show {
+        display: block;
+      }
+
+      .alert-warning {
+        background-color: #fff3cd;
+        color: #856404;
+        border-left-color: #ffc107;
+      }
+
+      .alert-warning strong {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login">
+      <div class="container">
+          <a href="/" class="back">Back</a>
+        <div class="header">
+          <h2><i class="fas fa-sign-in-alt"></i> Admin Login</h2>
+        </div>
+
+        <div id="emailAlert" class="alert alert-warning">
+          <strong>⚠️ Email Not Verified!</strong><br>
+          <p style="margin-top: 5px; font-size: 14px;">Please check your email and verify your account before logging in. If you didn't receive the email, check your spam folder.</p>
+        </div>
+        
+        <div class="form-wrapper">
+          <p class="form-description">Sign in to your admin account</p>
+          
+          <form id="adminLogin">
+            <div class="form-group email">
+              <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group pass">
+              <label for="password"><i class="fas fa-lock"></i> Password</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required />
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+
+            <div class="form-footer">
+              <p>Don't have an account? <a href="/admin-panel/signup.html">Sign up here</a></p>
+              <p><a href="#forgot">Forgot your password?</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

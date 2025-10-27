@@ -47,3 +47,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Login
+const form = document.getElementById("adminLogin");
+
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const res = await fetch("http://localhost:4000/admin-login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+    console.log(result);
+
+    if (result.success) {
+      // ✅ Save token in browser localStorage
+      localStorage.setItem("adminToken", result.token);
+
+      alert("Login successful!");
+      // Redirect to admin dashboard
+      window.location.href = "/admin-panel/admin.html";
+    } else if (!result.emailVerified) {
+      // Show email verification alert
+      const emailAlert = document.getElementById("emailAlert");
+      if (emailAlert) {
+        emailAlert.classList.add("show");
+      }
+      alert(result.message);
+    } else {
+      alert(result.message);
+    }
+  });
+}

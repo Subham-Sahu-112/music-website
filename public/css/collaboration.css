@@ -412,15 +412,23 @@
     font-size: 1.5rem;
   }
 
+  .group-description {
+    text-align: center;
+  }
+
   .collaboration-gallery,
   .ollywood-gallery {
     grid-template-columns: 1fr;
   }
 
+  .collaboration-group {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
   .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+    flex-direction: column;
     padding: 8px;
-    gap: 8px;
   }
 
   .gallery-grid.double-col {

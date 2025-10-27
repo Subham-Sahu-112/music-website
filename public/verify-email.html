@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Verification - Prem Aanand</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        padding: 50px;
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+        animation: slideUp 0.5s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .icon-container {
+        margin-bottom: 30px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .spinner {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #667eea;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .icon-success {
+        font-size: 80px;
+        animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .icon-error {
+        font-size: 80px;
+        color: #dc3545;
+        animation: shake 0.5s;
+      }
+
+      @keyframes shake {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 32px;
+        font-weight: 700;
+      }
+
+      p.subtitle {
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      .status-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .status-box.success {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+      }
+
+      .status-box.error {
+        background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      button {
+        flex: 1;
+        min-width: 140px;
+        padding: 14px 28px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
+      }
+
+      .btn-primary:active {
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: #f0f0f0;
+        color: #333;
+        border: 2px solid #ddd;
+        font-weight: 600;
+      }
+
+      .btn-secondary:hover {
+        background: #e0e0e0;
+        border-color: #999;
+      }
+
+      .loading {
+        display: none;
+      }
+
+      .loading.show {
+        display: block;
+      }
+
+      .content-section {
+        display: none;
+      }
+
+      .content-section.show {
+        display: block;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .divider {
+        height: 1px;
+        background: #eee;
+        margin: 30px 0;
+      }
+
+      .error-details {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: left;
+        color: #856404;
+        font-size: 14px;
+        margin: 20px 0;
+      }
+
+      .success-details {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 15px;
+        border-radius: 5px;
+        text-align: left;
+        color: #155724;
+        font-size: 14px;
+        margin: 20px 0;
+      }
+
+      .brand {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+        color: #999;
+        font-size: 12px;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 30px 20px;
+        }
+
+        h1 {
+          font-size: 26px;
+        }
+
+        button {
+          width: 100%;
+        }
+
+        .button-group {
+          flex-direction: column;
+        }
+
+        p.subtitle {
+          font-size: 14px;
+        }
+      }
+
+      .loading-text {
+        color: #666;
+        font-size: 14px;
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Loading State -->
+      <div class="loading show" id="loadingState">
+        <div class="icon-container">
+          <div class="spinner"></div>
+        </div>
+        <h1>Verifying Email</h1>
+        <p class="subtitle">Please wait while we verify your email address...</p>
+        <p class="loading-text">⏳ This usually takes a few seconds</p>
+      </div>
+
+      <!-- Success State -->
+      <div class="content-section" id="successState">
+        <div class="icon-container">
+          <div class="icon-success">✓</div>
+        </div>
+        <h1>Email Verified Successfully!</h1>
+        <p class="subtitle">Your email has been verified and your account is now active.</p>
+        <div class="status-box success">
+          ✓ Your account is ready to use. You can now login with your credentials.
+        </div>
+        <div class="success-details">
+          <strong>What's Next?</strong><br>
+          Click the "Go to Login" button below to login to your admin dashboard.
+        </div>
+      </div>
+
+      <!-- Error State -->
+      <div class="content-section" id="errorState">
+        <div class="icon-container">
+          <div class="icon-error">✕</div>
+        </div>
+        <h1>Verification Failed</h1>
+        <p class="subtitle" id="errorMessage">Something went wrong with the email verification.</p>
+        <div class="status-box error" id="errorStatusBox">
+          Invalid or expired verification token
+        </div>
+        <div class="error-details">
+          <strong>What happened?</strong><br>
+          <ul style="margin: 10px 0 0 20px; padding: 0;">
+            <li>The verification link may have expired (valid for 24 hours)</li>
+            <li>The link may have been used already</li>
+            <li>There may be a typo in the verification URL</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Button Group -->
+      <div class="button-group" id="buttonGroup" style="display: none;">
+        <button class="btn-primary" onclick="goToLogin()">
+          🔐 Go to Login
+        </button>
+      </div>
+
+      <!-- Brand Footer -->
+      <div class="brand">
+        <p>&copy; 2025 Prem Aanand Music Director. All rights reserved.</p>
+      </div>
+    </div>
+
+    <script>
+      async function verifyEmail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get("token");
+
+        console.log("🔍 Verification token:", token);
+
+        if (!token) {
+          showError("No verification token found in the URL. Please check the link from your email.");
+          return;
+        }
+
+        // Simulate slight delay for better UX
+        setTimeout(async () => {
+          try {
+            console.log("📤 Sending verification request to backend...");
+            const response = await fetch(
+              `http://localhost:4000/verify-email?token=${token}`
+            );
+            const data = await response.json();
+
+            console.log("📥 Backend response:", data);
+
+            if (response.ok && data.success) {
+              console.log("✅ Email verified successfully!");
+              showSuccess();
+            } else {
+              console.log("❌ Verification failed:", data.message);
+              showError(
+                data.message || "Failed to verify email. Please try again."
+              );
+            }
+          } catch (error) {
+            console.error("❌ Verification error:", error);
+            showError(
+              "Server connection error. Please check your internet connection and try again."
+            );
+          }
+        }, 1000);
+      }
+
+      function showSuccess() {
+        document.getElementById("loadingState").classList.remove("show");
+        document.getElementById("successState").classList.add("show");
+        document.getElementById("buttonGroup").style.display = "flex";
+      }
+
+      function showError(message) {
+        document.getElementById("loadingState").classList.remove("show");
+        document.getElementById("errorState").classList.add("show");
+        document.getElementById("errorMessage").textContent = message;
+        document.getElementById("errorStatusBox").textContent = message;
+        document.getElementById("buttonGroup").style.display = "flex";
+      }
+
+      function goToLogin() {
+        window.location.href = "/admin-panel/login.html";
+      }
+
+      function goHome() {
+        window.location.href = "/";
+      }
+
+      // Start verification when page loads
+      document.addEventListener("DOMContentLoaded", verifyEmail);
+    </script>
+  </body>
+</html>
