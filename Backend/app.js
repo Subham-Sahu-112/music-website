@@ -196,4 +196,17 @@ app.get("/name", (req, res) => {
   res.json({ name: "Subham", role: "Admin" });
 });
 
+// Routes to serve admin pages
+app.get("/admin-login", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin-panel/login.html'));
+});
+
+app.get("/admin-register", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin-panel/signup.html'));
+});
+
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin-panel/admin.html'));
+});
+
 app.listen(PORT, () => console.log("Server is Started at PORT:", PORT));

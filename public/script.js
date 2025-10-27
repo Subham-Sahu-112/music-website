@@ -58,7 +58,7 @@ if (form) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    const res = await fetch("http://localhost:4000/admin-login", {
+    const res = await fetch("/admin-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -73,7 +73,7 @@ if (form) {
 
       alert("Login successful!");
       // Redirect to admin dashboard
-      window.location.href = "/admin-panel/admin.html";
+      window.location.href = "/admin";
     } else if (!result.emailVerified) {
       // Show email verification alert
       const emailAlert = document.getElementById("emailAlert");

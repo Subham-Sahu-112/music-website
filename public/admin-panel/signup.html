@@ -176,7 +176,7 @@
             </button>
 
             <div class="form-footer">
-              <p>Already have an account? <a href="/admin-panel/login.html">Login here</a></p>
+              <p>Already have an account? <a href="/admin-login">Login here</a></p>
             </div>
           </form>
         </div>
@@ -216,7 +216,10 @@
             password,
           };
 
-          const response = await fetch("http://localhost:4000/admin-register", {
+          // Use relative URL so it works in both local and production
+          const apiUrl = `${window.location.protocol}//${window.location.host}/admin-register`;
+          
+          const response = await fetch(apiUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(formData),
@@ -250,7 +253,7 @@
         }
 
         try {
-          const response = await fetch("http://localhost:4000/resend-verification-email", {
+          const response = await fetch("/resend-verification-email", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email }),
