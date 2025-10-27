@@ -21,6 +21,24 @@ const app = Express();
 app.use(cors());
 app.use(Express.urlencoded({ extended: true }));
 app.use(Express.json());
+
+// ⚠️ IMPORTANT: Custom routes MUST come BEFORE static middleware
+// Otherwise static middleware will try to find files first and return 404
+
+// Routes to serve admin pages (MUST be before Express.static)
+app.get("/admin-login", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin-panel/login.html'));
+});
+
+app.get("/admin-register", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin-panel/signup.html'));
+});
+
+app.get("/admin", (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/admin-panel/admin.html'));
+});
+
+// Serve static files (CSS, images, etc.)
 app.use(Express.static(path.join(__dirname, '../public')));
 
 mongoose
@@ -194,19 +212,6 @@ app.post("/resend-verification-email", async (req, res) => {
 
 app.get("/name", (req, res) => {
   res.json({ name: "Subham", role: "Admin" });
-});
-
-// Routes to serve admin pages
-app.get("/admin-login", (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/admin-panel/login.html'));
-});
-
-app.get("/admin-register", (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/admin-panel/signup.html'));
-});
-
-app.get("/admin", (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/admin-panel/admin.html'));
 });
 
 app.listen(PORT, () => console.log("Server is Started at PORT:", PORT));
