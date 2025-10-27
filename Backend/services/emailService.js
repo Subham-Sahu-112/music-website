@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
  */
 const sendVerificationEmail = async (email, verificationToken, adminName) => {
   try {
-    // Using localhost:3000 since frontend is served on port 3000
-    const verificationLink = `http://localhost:4000/verify-email.html?token=${verificationToken}`;
+    // Using production backend URL for verification link
+    const verificationLink = `https://music-website-hms9.onrender.com/verify-email.html?token=${verificationToken}`;
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
