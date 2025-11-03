@@ -38,7 +38,11 @@
 
 /* Blog Post Card */
 .blog-post {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
   border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: 15px;
   padding: 30px;
@@ -111,7 +115,11 @@
 
 /* Newsletter Section */
 .newsletter {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.15),
+    rgba(255, 215, 0, 0.05)
+  );
   border: 2px solid #ffd700;
   border-radius: 20px;
   padding: 50px 30px;
@@ -183,14 +191,19 @@
   box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
 }
 
-/* Footer */
+/* Footer Styles */
 .footer {
-  background: #0a0a0a;
-  color: #888;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+  color: white;
   text-align: center;
-  padding: 30px 20px;
-  border-top: 1px solid rgba(255, 215, 0, 0.2);
-  margin-top: 50px;
+  padding: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive Design */
